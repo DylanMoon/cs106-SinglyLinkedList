@@ -37,10 +37,7 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 
 	@Override
 	public boolean isEmpty() {
-		if (count == 0) {
-			return true;
-		}
-		return false;
+		return count == 0;
 	}
 
 
