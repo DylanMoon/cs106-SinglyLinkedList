@@ -8,23 +8,17 @@ import java.util.*;
 public class BasicSinglyLinkedList implements SinglyLinkedList {
 
 	int count = 0;
-	Node first;
-	Node last;
+	Node first = null;
+	Node last = null;
 
 	@Override
 	public Node getFirst() {
-		if (count == 0) {
-			return null;
-		}
 		return first;
 	}
 
 
 	@Override
 	public Node getLast() {
-		if (count == 0) {
-			return null;
-		}
 		return last;
 	}
 
@@ -45,6 +39,7 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 	public void clear() {
 		count = 0;
 		first = null;
+		last = null;
 	}
 
 
