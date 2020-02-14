@@ -167,5 +167,4 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 		}
 		out.close();
 	}
-
 }
