@@ -44,25 +44,19 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 
 
 	@Override
-	// insert after cursor
-	public Node insert(Node cursor, String value) {
+	public Node insert(Node cursor, String value) { // insert after cursor
 		Node newNode = new Node(value);
-		// if inserting at the top
-		if (cursor == null) {
+		if (cursor == null) { // inserting at the top
 			newNode.next = first;
 			first = newNode;
-		}
-		// inserting in the middle
-		else {
+		} else {// inserting in the middle
 			newNode.next = cursor.next;
-			// if inserting at the end
-			if (cursor.next == null) {
+			if (cursor.next == null) {// if inserting at the end
 				last = newNode;
 			}
 			cursor.next = newNode;
 		}
-		// if list was empty
-		if (count == 0) {
+		if (count == 0) { // if list was empty
 			last = newNode;
 		}
 		count++;
@@ -73,8 +67,7 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 	@Override
 	public Node append(String value) {
 		Node newNode = new Node(value);
-		// if list is empty
-		if (count == 0) {
+		if (count == 0) {// if list is empty
 			first = newNode;
 		} else {
 			last.next = newNode;
@@ -123,14 +116,15 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 	public String toCsvString() {
 		StringBuilder csv = new StringBuilder();
 		Node cursor = first;
-		boolean first_item = true;
+		boolean first_node = true;
 		while (cursor != null) {
-			if (!first_item) {
-				csv.append(",");
+			if (first_node) {
+				csv.append(cursor.value);
+				first_node = false;
+			} else {
+				csv.append("," + cursor.value);
 			}
-			csv.append(cursor.value);
 			cursor = cursor.next;
-			first_item = false;
 		}
 		return csv.toString();
 	}
@@ -154,7 +148,6 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 		for (var line : lines) {
 			append(line);
 		}
-
 	}
 
 
@@ -162,14 +155,15 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 	public void saveFile(String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename)));
 		Node cursor = first;
-		boolean first = true;
+		boolean first_node = true;
 		while (cursor != null) {
-			if (!first) {
-				out.append("\n");
+			if (first_node) {
+				out.append(cursor.value);
+				first_node = false;
+			} else {
+				out.append("\n" + cursor.value);
 			}
-			out.append(cursor.value);
 			cursor = cursor.next;
-			first = false;
 		}
 		out.close();
 	}
