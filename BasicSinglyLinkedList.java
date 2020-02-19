@@ -37,7 +37,9 @@ public class BasicSinglyLinkedList implements SinglyLinkedList {
 
 	@Override
 	public void clear() {
-		count = 0;
+		while (count > 0) {
+			remove(first);
+		}
 		first = null;
 		last = null;
 	}
